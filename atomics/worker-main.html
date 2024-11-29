@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Atomics & SharedArrayBuffer - Worker Main</title>
+  <link rel="stylesheet" href="/matcha.css">
+  <link rel="stylesheet" href="/custom.css">
+  <script type="module">
+    const w = new Worker('./worker-main.js', { type: 'module' });
+    w.addEventListener('message', ({ data }) => {
+      const { action, content } = data;
+      switch(action) {
+        case 'show': {
+          main.textContent = content;
+          break;
+        }
+        case 'wait': {
+          const button = main.appendChild(
+            Object.assign(
+              document.createElement('button'),
+              {
+                textContent: '⏭️',
+                onclick() {
+                  content[0] = 1;
+                  Atomics.notify(content, 0);
+                }
+              }
+            )
+          );
+        }
+      }
+    });
+  </script>
+</head>
+<body>
+  <main id="main">
+    <h3>Worker Main</h3>
+  </main>
+  <a class="back" href="./">⏮️ back</a>
+</body>
+</html>

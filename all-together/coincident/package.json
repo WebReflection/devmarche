@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "dependencies": {
+    "coincident": "^2.2.3",
+    "static-handler": "^0.5.3",
+    "ws": "^8.18.0"
+  }
+}

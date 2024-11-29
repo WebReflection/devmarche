@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>PyScript</title>
+  <script type="module" src="./pyscript/core.js"></script>
+  <link rel="stylesheet" href="./pyscript/core.css">
+  <link rel="stylesheet" href="/matcha.css">
+  <link rel="stylesheet" href="/custom.css">
+</head>
+<body>
+  <!-- <mpy-config>
+    interpreter = "./micropython/micropython.mjs"
+  </mpy-config> -->
+  <script type="mpy" config='{"interpreter":"./micropython/micropython.mjs"}' terminal worker>
+    from pyscript import document
+    document.body.prepend('MicroPython in the house!');
+
+    import code
+    code.interact();
+  </script>
+  <a class="back" href="../">⏮️ presentation</a>
+</body>
+</html>

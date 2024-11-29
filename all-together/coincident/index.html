@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coincident</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100dvh;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+      #free {
+        cursor: pointer;
+      }
+    </style>
+    <script type="module">
+      import coincident from 'https://esm.run/coincident/server/main';
+      const { Worker } = coincident({
+        ws: `ws://localhost:${location.port}/`
+      });
+      new Worker('./worker.js');
+    </script>
+  </head>
+</html>

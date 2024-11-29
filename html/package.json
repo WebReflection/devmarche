@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "build": "bunx terser -cm --module -- html.js",
+    "size": "bunx terser -cm --module -- html.js | brotli | wc -c"
+  }
+}
